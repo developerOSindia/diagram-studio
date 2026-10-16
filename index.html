@@ -31,7 +31,16 @@
 
   <main class="studio-layout">
     <section class="editor-pane">
-      <h2>Diagram Definition (Mermaid Syntax)</h2>
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 12px;">
+        <h2>Diagram Definition (Mermaid Syntax)</h2>
+        <div class="template-chips" id="template-chips">
+          <button type="button" class="tmpl-btn active" data-tmpl="arch">Architecture</button>
+          <button type="button" class="tmpl-btn" data-tmpl="flow">Flowchart</button>
+          <button type="button" class="tmpl-btn" data-tmpl="seq">Sequence</button>
+          <button type="button" class="tmpl-btn" data-tmpl="state">State</button>
+          <button type="button" class="tmpl-btn" data-tmpl="git">GitGraph</button>
+        </div>
+      </div>
       <textarea id="diagram-source" spellcheck="false">graph TD
   User((Developer)) -->|HTTPS| Cloudflare[Cloudflare Pages CDN]
   Cloudflare -->|Route /tools| Directory[Central Tools Directory]
@@ -42,16 +51,26 @@
 </textarea>
       <div class="editor-actions">
         <button id="render-btn" class="btn-primary">Render Diagram Preview</button>
+        <button id="btn-copy-mermaid" type="button" class="btn-copy">📋 Copy Mermaid Code</button>
+        <button id="btn-copy-preview" type="button" class="btn-copy">📋 Copy Output</button>
       </div>
     </section>
 
     <section class="preview-pane">
-      <h2>Live Architecture Preview</h2>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+        <h2>Live Architecture Preview</h2>
+        <span class="preview-status" style="font-size: 0.78rem; color: #10b981;">● Instant Client-Side</span>
+      </div>
       <div id="preview-container" class="preview-box">
         <pre id="raw-preview"></pre>
       </div>
     </section>
   </main>
+
+  <div id="quick-toast" class="quick-toast" role="status" aria-live="polite">
+    <span class="quick-toast-icon">✓</span>
+    <span id="quick-toast-msg"></span>
+  </div>
 
   <!-- Universal Main Promotional Banner -->
   <section class="devos-promotional-banner" role="region" aria-label="DeveloperOS Promotion" style="max-width: 1200px; margin: 2rem auto; padding: 1.5rem 1.75rem; background: linear-gradient(135deg, rgba(249, 115, 22, 0.08) 0%, rgba(244, 63, 94, 0.04) 50%, rgba(6, 182, 212, 0.06) 100%), #0c0f15; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.25rem;">
