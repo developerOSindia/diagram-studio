@@ -29,7 +29,22 @@
     </div>
   </header>
 
-  <main class="studio-layout">
+  <!-- Studio Top Toolbar with View Mode Controls -->
+  <div class="studio-toolbar-banner">
+    <div class="studio-toolbar">
+      <div class="view-mode-group" role="group" aria-label="Layout View Modes">
+        <span class="toolbar-label">View Mode:</span>
+        <button type="button" id="btn-view-split" class="view-mode-btn active" data-view="split">Split View</button>
+        <button type="button" id="btn-view-visual" class="view-mode-btn" data-view="visual">Visual Only</button>
+        <button type="button" id="btn-view-code" class="view-mode-btn" data-view="code">Code Only</button>
+      </div>
+      <div class="toolbar-meta">
+        <span class="meta-dot">●</span> 100% In-Memory SVG • 0ms Latency • Zero Telemetry
+      </div>
+    </div>
+  </div>
+
+  <main class="studio-layout layout-split">
     <section class="editor-pane">
       <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 12px;">
         <h2>Diagram Definition (Mermaid Syntax)</h2>
@@ -57,12 +72,37 @@
     </section>
 
     <section class="preview-pane">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-        <h2>Live Architecture Preview</h2>
-        <span class="preview-status" style="font-size: 0.78rem; color: #10b981;">● Instant Client-Side</span>
+      <div class="preview-header">
+        <div class="preview-title-wrap">
+          <h2>Live Architecture Preview</h2>
+          <span class="preview-status" style="font-size: 0.78rem; color: #10b981;">● Instant Client-Side</span>
+        </div>
+        <div class="preview-toolbar">
+          <div class="zoom-controls" role="group" aria-label="Diagram Zoom Controls">
+            <button type="button" id="btn-zoom-in" class="ctrl-btn" title="Zoom In" aria-label="Zoom In">Zoom In +</button>
+            <button type="button" id="btn-zoom-out" class="ctrl-btn" title="Zoom Out" aria-label="Zoom Out">Zoom Out -</button>
+            <button type="button" id="btn-zoom-reset" class="ctrl-btn reset-btn" title="Reset Zoom & Pan" aria-label="Reset Zoom">Reset ⟲</button>
+            <span id="zoom-value" class="zoom-indicator">100%</span>
+          </div>
+          <div class="preview-tabs" role="tablist" aria-label="Preview Tabs">
+            <button type="button" id="tab-visual" class="tab-btn active" role="tab" aria-selected="true">🎨 Visual</button>
+            <button type="button" id="tab-raw" class="tab-btn" role="tab" aria-selected="false">📄 Raw Output</button>
+          </div>
+        </div>
       </div>
+
       <div id="preview-container" class="preview-box">
-        <pre id="raw-preview"></pre>
+        <div id="visual-preview" class="visual-preview-canvas" role="region" aria-label="Interactive SVG Canvas">
+          <div class="svg-viewport-wrapper"></div>
+        </div>
+        <pre id="raw-preview" class="raw-preview-box" style="display: none;"></pre>
+      </div>
+
+      <!-- Diagram Export Actions -->
+      <div class="export-actions">
+        <button id="btn-download-svg" type="button" class="btn-export-primary">📥 Download SVG</button>
+        <button id="btn-copy-svg" type="button" class="btn-copy">📋 Copy SVG</button>
+        <button id="btn-export-def" type="button" class="btn-copy">📥 Export Definition</button>
       </div>
     </section>
   </main>
