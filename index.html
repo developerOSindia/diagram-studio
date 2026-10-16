@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DeveloperOS Diagram Studio — Architecture as Code</title>
+  <meta name="description" content="Interactive Architecture-as-Code Mermaid studio. Visualize workflows, system design, and sequence diagrams with instant client-side rendering.">
+  <link rel="canonical" href="https://developeros.in/diagram-studio">
+  <meta property="og:title" content="DeveloperOS Diagram Studio — Architecture as Code">
+  <meta property="og:description" content="Interactive Architecture-as-Code Mermaid studio. Visualize workflows, system design, and sequence diagrams with instant client-side rendering.">
+  <meta property="og:image" content="https://developeros.in/og-diagram-studio.png">
+  <meta property="og:url" content="https://developeros.in/diagram-studio">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header-content">
+      <div class="brand">
+        <a href="https://developeros.in" class="brand-link" target="_blank" rel="noopener noreferrer">DeveloperOS</a>
+        <span class="sep">/</span>
+        <span class="sub">Diagram Studio</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="https://developeros.in?utm_source=developeros_tools&utm_medium=header_banner&utm_campaign=powered_by" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 4px; background: rgba(249, 115, 22, 0.12); border: 1px solid rgba(249, 115, 22, 0.35); color: #f97316; font-size: 0.78rem; font-weight: 600; padding: 3px 10px; border-radius: 9999px; text-decoration: none;">⚡ Powered by DeveloperOS ↗</a>
+        <span class="badge">Flagship App</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="studio-layout">
+    <section class="editor-pane">
+      <h2>Diagram Definition (Mermaid Syntax)</h2>
+      <textarea id="diagram-source" spellcheck="false">graph TD
+  User((Developer)) -->|HTTPS| Cloudflare[Cloudflare Pages CDN]
+  Cloudflare -->|Route /tools| Directory[Central Tools Directory]
+  Cloudflare -->|Route /suites| Streamlit[Streamlit Community Cloud]
+  Streamlit -->|In-Memory Execution| PureCore[Core Pure Algorithms]
+  PureCore -->|0ms Latency| Streamlit
+  Directory -->|Local Storage| BrowserCache[Client Browser Cache]
+</textarea>
+      <div class="editor-actions">
+        <button id="render-btn" class="btn-primary">Render Diagram Preview</button>
+      </div>
+    </section>
+
+    <section class="preview-pane">
+      <h2>Live Architecture Preview</h2>
+      <div id="preview-container" class="preview-box">
+        <pre id="raw-preview"></pre>
+      </div>
+    </section>
+  </main>
+
+  <!-- Universal Main Promotional Banner -->
+  <section class="devos-promotional-banner" role="region" aria-label="DeveloperOS Promotion" style="max-width: 1200px; margin: 2rem auto; padding: 1.5rem 1.75rem; background: linear-gradient(135deg, rgba(249, 115, 22, 0.08) 0%, rgba(244, 63, 94, 0.04) 50%, rgba(6, 182, 212, 0.06) 100%), #0c0f15; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.25rem;">
+    <div style="display: flex; align-items: center; gap: 1.25rem;">
+      <svg viewBox="0 0 64 64" width="40" height="40" fill="none" style="flex-shrink: 0;" aria-hidden="true">
+        <defs>
+          <linearGradient id="diagGrad" x1="10%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#ff3b30"/>
+            <stop offset="48%" stop-color="#ff5a3d"/>
+            <stop offset="100%" stop-color="#ff914d"/>
+          </linearGradient>
+        </defs>
+        <path d="M15 20.5L33.5 14V49.5L15 46Z" fill="#05070a" stroke="url(#diagGrad)" stroke-width="2.8" stroke-linejoin="round"/>
+        <path d="M22 23L27 25.8L22 28.6" stroke="#f8fafc" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <line x1="23.5" y1="34.2" x2="29.2" y2="34.2" stroke="#f8fafc" stroke-width="2.8" stroke-linecap="round"/>
+      </svg>
+      <div>
+        <h3 style="margin: 0 0 0.35rem 0; font-size: 1.2rem; font-weight: 700; color: #f8fafc;">Enjoying this free tool?</h3>
+        <p style="margin: 0; color: #94a3b8; font-size: 0.95rem;">Discover more developer tools, AI resources, and automation solutions from DeveloperOS.</p>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 0.85rem; flex-wrap: wrap;">
+      <a href="https://developeros.in?utm_source=developeros_tools&utm_medium=main_banner&utm_campaign=ecosystem_referral" target="_blank" rel="noopener noreferrer" style="background-color: #f97316; color: #ffffff; font-weight: 600; font-size: 0.9rem; padding: 0.55rem 1.25rem; border-radius: 6px; text-decoration: none;">Explore DeveloperOS &rarr;</a>
+      <a href="https://tools.developeros.in?utm_source=developeros_tools&utm_medium=secondary_cta&utm_campaign=tools_directory" target="_blank" rel="noopener noreferrer" style="background-color: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.15); color: #f8fafc; font-weight: 600; font-size: 0.9rem; padding: 0.55rem 1.15rem; border-radius: 6px; text-decoration: none;">More Free Tools</a>
+    </div>
+  </section>
+
+  <!-- Universal Footer Banner -->
+  <footer class="footer" role="contentinfo" style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding: 2rem 1rem; text-align: center;">
+    <p style="font-size: 1rem; font-weight: 600; color: #f8fafc; margin-bottom: 0.75rem;">
+      Built with ❤️ by <a href="https://developeros.in?utm_source=developeros_tools&utm_medium=footer_tagline&utm_campaign=ecosystem_referral" target="_blank" rel="noopener noreferrer" style="color: #f97316; text-decoration: none; font-weight: 700;">DeveloperOS</a>
+    </p>
+    <div style="display: flex; justify-content: center; align-items: center; gap: 1.25rem; flex-wrap: wrap; margin-bottom: 0.75rem; font-size: 0.85rem;">
+      <a href="https://developeros.in" target="_blank" rel="noopener noreferrer" style="color: #06b6d4; text-decoration: none;">DeveloperOS Home</a>
+      <span style="color: rgba(255, 255, 255, 0.2);">•</span>
+      <a href="https://tools.developeros.in" target="_blank" rel="noopener noreferrer" style="color: #06b6d4; text-decoration: none;">All Tools Directory</a>
+      <span style="color: rgba(255, 255, 255, 0.2);">•</span>
+      <a href="https://github.com/developerOSindia" target="_blank" rel="noopener noreferrer" style="color: #06b6d4; text-decoration: none;">GitHub Organization</a>
+      <span style="color: rgba(255, 255, 255, 0.2);">•</span>
+      <a href="https://developeros.in/privacy" target="_blank" rel="noopener noreferrer" style="color: #06b6d4; text-decoration: none;">Privacy Policy</a>
+    </div>
+    <p style="margin: 0; color: #6b7c94; font-size: 0.8rem;">Architecture-as-code rendered purely client-side • Zero Telemetry Guarantee</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

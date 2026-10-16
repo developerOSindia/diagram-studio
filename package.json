@@ -1,0 +1,11 @@
+{
+  "name": "@developeros/diagram-studio",
+  "version": "1.0.0",
+  "description": "DeveloperOS Flagship: Architecture-as-Code Diagram Studio",
+  "private": true,
+  "scripts": {
+    "start": "python3 -m http.server 8081",
+    "test": "python3 -m unittest discover -s tests"
+  },
+  "license": "MIT"
+}

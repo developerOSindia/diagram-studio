@@ -1,0 +1,29 @@
+:root {
+  --bg: #0f172a;
+  --surface: #1e293b;
+  --surface-border: #334155;
+  --text: #f8fafc;
+  --text-muted: #94a3b8;
+  --accent: #38bdf8;
+  --primary: #2563eb;
+  --font-base: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--text); font-family: var(--font-base); display: flex; flex-direction: column; min-height: 100vh; }
+.header { border-bottom: 1px solid var(--surface-border); padding: 16px 24px; background: rgba(15, 23, 42, 0.9); }
+.header-content { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+.brand-link { color: var(--accent); text-decoration: none; font-weight: 700; text-transform: uppercase; }
+.sep { color: var(--surface-border); margin: 0 8px; }
+.sub { color: var(--text-muted); font-size: 0.95rem; }
+.badge { background: rgba(56, 189, 248, 0.15); color: var(--accent); padding: 4px 12px; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; }
+.studio-layout { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 1400px; width: 100%; margin: 24px auto; padding: 0 24px; }
+.editor-pane, .preview-pane { background: var(--surface); border: 1px solid var(--surface-border); border-radius: 8px; padding: 20px; display: flex; flex-direction: column; }
+h2 { font-size: 1.1rem; margin-bottom: 12px; color: #ffffff; }
+textarea { flex: 1; min-height: 400px; background: #0b1120; color: #e2e8f0; font-family: var(--font-mono); font-size: 0.9rem; padding: 14px; border: 1px solid var(--surface-border); border-radius: 6px; resize: none; outline: none; }
+.editor-actions { margin-top: 16px; }
+.btn-primary { background: var(--primary); color: #fff; border: none; padding: 10px 18px; border-radius: 6px; font-weight: 600; cursor: pointer; }
+.preview-box { flex: 1; background: #0b1120; border: 1px solid var(--surface-border); border-radius: 6px; padding: 16px; overflow: auto; }
+pre { font-family: var(--font-mono); color: var(--accent); font-size: 0.85rem; line-height: 1.5; white-space: pre-wrap; }
+.footer { border-top: 1px solid var(--surface-border); padding: 16px; text-align: center; color: var(--text-muted); font-size: 0.85rem; }
