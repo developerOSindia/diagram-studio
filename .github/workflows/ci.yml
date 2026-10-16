@@ -1,16 +1,45 @@
-name: CI - Diagram Studio Flagship
+name: CI Test Suite
 
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - "**.md"
+      - "docs/**"
+      - "assets/**"
+      - "LICENSE"
+      - ".gitignore"
   pull_request:
     branches: [main]
+    paths-ignore:
+      - "**.md"
+      - "docs/**"
+      - "assets/**"
+      - "LICENSE"
+      - ".gitignore"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   test:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
+
     steps:
-      - uses: actions/checkout@v4
-      - name: Validate Portal Assets
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install Dependencies
         run: |
-          python3 -m unittest discover -s tests
+          
+      - name: Execute Tests
+        run: |
+          python3 -m unittest discover -s tests -p "test_*.py"
