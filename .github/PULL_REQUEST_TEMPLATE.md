@@ -18,7 +18,7 @@
 ## Related Issues & Documentation
 - Fixes #
 - DeveloperOS Ecosystem: [https://developeros.in](https://developeros.in)
-- Central Tools Directory: [https://tools.developeros.in](https://tools.developeros.in)
+- Central Tools Directory: [https://toolkit.developeros.in](https://toolkit.developeros.in)
 
 ## Checklist
 - [ ] My code adheres to the DeveloperOS style guide and linting standards.
