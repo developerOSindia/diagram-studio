@@ -15,10 +15,25 @@ class TestDiagramStudio(unittest.TestCase):
         self.assertTrue((DIR_ROOT / "app.js").exists())
         self.assertTrue((DIR_ROOT / "package.json").exists())
 
-    def test_html_content(self):
+    def test_html_structure_and_seo(self):
         content = (DIR_ROOT / "index.html").read_text(encoding="utf-8")
-        self.assertIn("Diagram Studio", content)
-        self.assertIn("diagram-source", content)
+        self.assertIn("DeveloperOS Diagram Studio", content)
+        self.assertIn('id="diagram-source"', content)
+        self.assertIn('id="render-btn"', content)
+        self.assertIn('id="raw-preview"', content)
+        self.assertIn('class="devos-promotional-banner"', content)
+        self.assertIn('https://developeros.in', content)
+
+    def test_styles_rules(self):
+        css = (DIR_ROOT / "styles.css").read_text(encoding="utf-8")
+        self.assertIn(".studio-layout", css)
+        self.assertIn(".editor-pane", css)
+        self.assertIn(".preview-pane", css)
+
+    def test_client_javascript(self):
+        js = (DIR_ROOT / "app.js").read_text(encoding="utf-8")
+        self.assertIn("function updatePreview", js)
+        self.assertIn("DOMContentLoaded", js)
 
 
 if __name__ == "__main__":
